@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Typography, Avatar, Menu } from "antd";
 import { Link } from "react-router-dom";
-import icon from "../images/cryptocurrency.png";
 import {
   HomeOutlined,
   MoneyCollectOutlined,
@@ -10,9 +9,11 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 
+import icon from "../images/cryptocurrency.png";
+
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
-  const [screenSize, setScreenSize] = useState(null);
+  const [screenSize, setScreenSize] = useState(undefined);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -24,7 +25,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (screenSize < 768) {
+    if (screenSize <= 800) {
       setActiveMenu(false);
     } else {
       setActiveMenu(true);
